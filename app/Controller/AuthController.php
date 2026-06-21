@@ -12,9 +12,10 @@ use Hyperf\HttpServer\Annotation\Middleware;
 use Hyperf\HttpServer\Annotation\RequestMapping;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Contract\ResponseInterface;
+use App\Middleware\AuthMiddleware;
 
 #[Controller(prefix: '/api/auth')]
-#[Middleware(middleware: App\Middleware\AuthMiddleware::class)]
+#[Middleware(middleware: AuthMiddleware::class)]
 class AuthController extends AbstractController
 {
     #[Inject]

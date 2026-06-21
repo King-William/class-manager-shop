@@ -51,7 +51,7 @@ class ClassService
                 return ['id' => (int) $class->id];
             });
         } catch (BusinessException) {
-            throw;
+            throw new BusinessException(ErrorCode::SERVER_ERROR);
         } catch (\PDOException $e) {
             // 捕获唯一索引冲突等数据库异常
             throw new BusinessException(ErrorCode::SERVER_ERROR);

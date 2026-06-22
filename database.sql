@@ -13,6 +13,8 @@
 CREATE DATABASE IF NOT EXISTS `class_manager_shop` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `class_manager_shop`;
 
+SET SESSION sql_mode = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION';
+
 -- ============================================================
 -- 表 1: users - 用户表
 -- ============================================================
@@ -46,8 +48,8 @@ CREATE TABLE `classes` (
     `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT '主键ID',
     `name` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '班级名称',
     `teacher_id` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '创建老师ID，关联users.id',
-    `start_date` DATE NOT NULL DEFAULT '' COMMENT '课程总开始日期',
-    `end_date` DATE NOT NULL DEFAULT '' COMMENT '课程总结束日期',
+    `start_date` DATE NOT NULL DEFAULT '0000-00-00' COMMENT '课程总开始日期',
+    `end_date` DATE NOT NULL DEFAULT '0000-00-00' COMMENT '课程总结束日期',
     `class_days` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '每周上课日，逗号分隔: 1,3,5 表示周一、周三、周五',
     `class_start_time` VARCHAR(10) NOT NULL DEFAULT '' COMMENT '每日开始时间，格式 HH:MM',
     `class_end_time` VARCHAR(10) NOT NULL DEFAULT '' COMMENT '每日结束时间，格式 HH:MM',
